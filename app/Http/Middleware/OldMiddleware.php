@@ -13,7 +13,12 @@ class OldMiddleware {
 	 */
 	public function handle($request, Closure $next)
 	{
-		return $next($request);
+		if ($request->input('age') < 200)
+        {
+            return redirect('home');
+        }
+
+        return $next($request);
 	}
 
 }
